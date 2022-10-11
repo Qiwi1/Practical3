@@ -4,6 +4,7 @@ import com.example.Practical3.models.Role;
 import com.example.Practical3.models.User;
 import com.example.Practical3.reposytories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,8 @@ public class RegistrationController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
     @GetMapping("/registration")
     public String regView(Model model, User user)
     {
@@ -33,6 +36,7 @@ public class RegistrationController {
         }
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
         return "redirect:/login";

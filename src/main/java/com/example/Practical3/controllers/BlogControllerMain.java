@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BlogControllerMain {
-    @GetMapping("/main")
+    @GetMapping("/")
     public String FruitMain1(Model model)
     {
         return "main";
