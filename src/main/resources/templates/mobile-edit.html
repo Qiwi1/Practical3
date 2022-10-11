@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div th:each="el:${mobile}">
+    <form method="post">
+        <input type="text" th:value="${el.modelsTel}" name="modelsTel" placeholder="Введите модель телефона">
+        <input type="text" th:value="${el.number}" name="number" placeholder="Введите номер телефона">
+        <input type="text" th:value="${el.memory}" name="memory" placeholder="Введите память телефона">
+        <input type="text" th:value="${el.memoryGB}" name="memoryGB" placeholder="Введите оперативную память">
+        <input type="text" th:value="${el.operator}" name="operator" placeholder="Введите оператора">
+        <br>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

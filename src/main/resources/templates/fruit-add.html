@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление нового фруктиса</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<form th:action="${'/fruit/add'}" method="post">
+    <input type="text" name="nazvanie" placeholder="Введите название">
+    <input type="text" name="strana" placeholder="Введите страну">
+    <input type="text" name="ves" placeholder="Введите вес">
+    <input type="text" name="forma" placeholder="Введите форму">
+    <input type="text" name="kolwo" placeholder="Введите колво">
+    <br>
+    <button href="/fruit/Main" type="submit">Добавить фрукт</button>
+</form>
+</body>
+</html>

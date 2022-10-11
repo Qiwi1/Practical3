@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<h1>Все фрукты</h1>
+<a href="/fruit/filter">Поиск фрукта</a>
+<a href="/fruit/add">Добавить фрукт</a>
+<div th:each="el : ${Fruit}">
+    <h3 th:text="${el.nazvanie}"></h3>
+    <p th:text="${el.strana}"></p>
+    <p th:text="${el.ves}"></p>
+    <a th:href="'/fruit/' + ${el.id}">Подробнее</a>
+
+</div>
+</body>
+</html>

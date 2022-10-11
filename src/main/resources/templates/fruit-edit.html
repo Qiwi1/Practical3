@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div th:each="el:${fruit}">
+    <form method="post">
+        <input type="text" th:value="${el.nazvanie}" id="nazvanie" name="nazvanie" placeholder="Введите название фрукта">
+        <input type="text" th:value="${el.strana}" name="strana" placeholder="Введите страну">
+        <input type="text" th:value="${el.ves}" name="ves" placeholder="Введите вес">
+        <input type="text" th:value="${el.forma}" name="forma" placeholder="Введите форму">
+        <input type="text" th:value="${el.kolwo}" name="kolwo" placeholder="Введите кол-во">
+     <br>
+     <br>
+        <button type="submit" >Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

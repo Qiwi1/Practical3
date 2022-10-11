@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+
+
+<h1>Все телефоны</h1>
+<a href="/mobile/filter">Поиск телефона</a>
+<a href="/mobile/add">Добавить телефон</a>
+<div th:each="el : ${mobile}">
+    <h3 th:text="${el.modelsTel}"></h3>
+    <p th:text="${el.number}"></p>
+    <a th:href="'/mobile/' + ${el.id}">Подробнее</a>
+</div>
+</body>
+</html>
