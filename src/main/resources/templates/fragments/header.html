@@ -7,11 +7,15 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/" class="nav-link px-2 link-secondary">Главная</a></li>
+          <li><a href="/main" class="nav-link px-2 link-secondary">Главная</a></li>
           <li><a href="/mobile/main" class="nav-link px-2 link-dark">Телефоны</a></li>
           <li><a href="/fruit/Main" class="nav-link px-2 link-dark">Фрукты</a></li>
         </ul>
-      </div>
+
+        <form th:action="@{/logout}" method="post">
+          <input type="submit" value="Sign Out"/>
+        </form>
+
     </div>
   </header>
 </div>
