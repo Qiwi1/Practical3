@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
 <head>
   <title>Регистрация </title>
 </head>
 <body>
-<h1>Регистрация пользователя</h1>
+<h1><b><center>Регистрация пользователя</center></b></h1>
 <div th:if="${error}">
+    <center>
   Пользователь с таким именем уже существует
-</div>
-
-<div th:if="${error}">
-  <p th:text="${error}"></p>
+    </center>
 </div>
 
 
-<form th:action="@{/registration}" method="post">
+<form th:action="@{/registration}" th:align="center" method="post">
   <div><label> Логин : <input type="text" name="username"/> </label></div>
   <div><label> Пароль : <input type="password" name="password"/> </label></div>
   <div><input type="submit" value="Зарегистрироваться"/></div>
 </form>
 
-<a href="/login">Назад</a>
+<a href="/login"><center>Назад</center></a>
 </body>
 </html>
