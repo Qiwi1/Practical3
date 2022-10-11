@@ -9,12 +9,17 @@
 
 <div th:insert="fragments/header :: mainheader"></div>
 
-<form th:action="${'/fruit/add'}" method="post">
-    <input type="text" name="nazvanie" placeholder="Введите название">
-    <input type="text" name="strana" placeholder="Введите страну">
-    <input type="text" name="ves" placeholder="Введите вес">
-    <input type="text" name="forma" placeholder="Введите форму">
-    <input type="text" name="kolwo" placeholder="Введите колво">
+<form th:object="${fruit}" th:action="${'/fruit/add'}" method="post">
+    <input th:field="*{nazvanie}" type="text" name="nazvanie" placeholder="Введите название">
+            <div style="color: red " th:if="${#fields.hasErrors('nazvanie')}" th:errors="*{nazvanie}"></div>
+    <input th:field="*{strana}" type="text" name="strana" placeholder="Введите страну">
+            <div style="color: red " th:if="${#fields.hasErrors('strana')}" th:errors="*{strana}"></div>
+    <input th:field="*{ves}" type="text" name="ves" placeholder="Введите вес">
+            <div style="color: red " th:if="${#fields.hasErrors('ves')}" th:errors="*{ves}"></div>
+    <input th:field="*{forma}" type="text" name="forma" placeholder="Введите форму">
+            <div style="color: red " th:if="${#fields.hasErrors('forma')}" th:errors="*{forma}"></div>
+    <input th:field="*{kolwo}" type="text" name="kolwo" placeholder="Введите колво">
+            <div style="color: red " th:if="${#fields.hasErrors('kolwo')}" th:errors="*{kolwo}"></div>
     <br>
     <button href="/fruit/Main" type="submit">Добавить фрукт</button>
 </form>

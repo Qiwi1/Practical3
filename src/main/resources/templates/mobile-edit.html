@@ -9,13 +9,18 @@
 
 <div th:insert="fragments/header :: mainheader"></div>
 
-<div th:each="el:${mobile}">
+<div th:object="${mobile}" th:each="el:${mobile}">
     <form method="post">
         <input type="text" th:value="${el.modelsTel}" name="modelsTel" placeholder="Введите модель телефона">
+        <div style="color: red " th:if="${#fields.hasErrors('modelsTel')}" th:errors="*{modelsTel}"></div>
         <input type="text" th:value="${el.number}" name="number" placeholder="Введите номер телефона">
+        <div style="color: red " th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
         <input type="text" th:value="${el.memory}" name="memory" placeholder="Введите память телефона">
+        <div style="color: red " th:if="${#fields.hasErrors('memory')}" th:errors="*{memory}"></div>
         <input type="text" th:value="${el.memoryGB}" name="memoryGB" placeholder="Введите оперативную память">
+        <div style="color: red " th:if="${#fields.hasErrors('memoryGB')}" th:errors="*{memoryGB}"></div>
         <input type="text" th:value="${el.operator}" name="operator" placeholder="Введите оператора">
+        <div style="color: red " th:if="${#fields.hasErrors('operator')}" th:errors="*{operator}"></div>
         <br>
         <button type="submit">Сохранить изменения</button>
     </form>

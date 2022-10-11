@@ -9,12 +9,17 @@
 
 <div th:insert="fragments/header :: mainheader"></div>
 
-<form th:action="${'/mobile/add'}" method="post">
-    <input type="text" name="modelsTel" placeholder="Введите модель телефона">
-    <input type="text" name="number" placeholder="Введите номер телефона">
-    <input type="text" name="memory" placeholder="Введите кол-во памяти">
-    <input type="text" name="memoryGB" placeholder="Введите кол-во оперативной памяти">
-    <input type="text" name="operator" placeholder="Введите имя оператора">
+<form th:object="${mobile}" th:action="${'/mobile/add'}" method="post">
+    <input th:field="*{modelsTel}" type="text" name="modelsTel" placeholder="Введите модель телефона">
+     <div style="color: red " th:if="${#fields.hasErrors('modelsTel')}" th:errors="*{modelsTel}"></div>
+    <input th:field="*{number}" type="text" name="number" placeholder="Введите номер телефона">
+     <div style="color: red " th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
+    <input th:field="*{memory}" type="text" name="memory" placeholder="Введите кол-во памяти">
+     <div style="color: red " th:if="${#fields.hasErrors('memory')}" th:errors="*{memory}"></div>
+    <input th:field="*{memoryGB}" type="text" name="memoryGB" placeholder="Введите кол-во оперативной памяти">
+     <div style="color: red " th:if="${#fields.hasErrors('memoryGB')}" th:errors="*{memoryGB}"></div>
+    <input th:field="*{operator}" type="text" name="operator" placeholder="Введите имя оператора">
+     <div style="color: red " th:if="${#fields.hasErrors('operator')}" th:errors="*{operator}"></div>
     <br>
     <button type="submit">Добавить телефон</button>
 </form>

@@ -10,12 +10,17 @@
 <div th:insert="fragments/header :: mainheader"></div>
 
 <div th:each="el:${fruit}">
-    <form method="post">
-        <input type="text" th:value="${el.nazvanie}" id="nazvanie" name="nazvanie" placeholder="Введите название фрукта">
-        <input type="text" th:value="${el.strana}" name="strana" placeholder="Введите страну">
-        <input type="text" th:value="${el.ves}" name="ves" placeholder="Введите вес">
-        <input type="text" th:value="${el.forma}" name="forma" placeholder="Введите форму">
-        <input type="text" th:value="${el.kolwo}" name="kolwo" placeholder="Введите кол-во">
+    <form th:object="${fruit}" method="post">
+        <input th:field="*{nazvanie}" type="text" th:value="${el.nazvanie}" id="nazvanie" name="nazvanie" placeholder="Введите название фрукта">
+         <div style="color: red " th:if="${#fields.hasErrors('nazvanie')}" th:errors="*{nazvanie}"></div>
+        <input th:field="*{strana}" type="text" th:value="${el.strana}" name="strana" placeholder="Введите страну">
+         <div style="color: red " th:if="${#fields.hasErrors('strana')}" th:errors="*{strana}"></div>
+        <input th:field="*{ves}" type="text" th:value="${el.ves}" name="ves" placeholder="Введите вес">
+         <div style="color: red " th:if="${#fields.hasErrors('ves')}" th:errors="*{ves}"></div>
+        <input th:field="*{forma}" type="text" th:value="${el.forma}" name="forma" placeholder="Введите форму">
+         <div style="color: red " th:if="${#fields.hasErrors('forma')}" th:errors="*{forma}"></div>
+        <input th:field="*{kolwo}" type="text" th:value="${el.kolwo}" name="kolwo" placeholder="Введите кол-во">
+         <div style="color: red " th:if="${#fields.hasErrors('kolwo')}" th:errors="*{kolwo}"></div>
      <br>
      <br>
         <button type="submit" >Сохранить изменения</button>

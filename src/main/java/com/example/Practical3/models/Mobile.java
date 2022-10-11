@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Mobile {
@@ -12,8 +14,23 @@ public class Mobile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String modelsTel,  number,  memory,  memoryGB,  operator;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String modelsTel;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String number;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String memory;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String memoryGB;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String operator;
     private int views;
+
 
     public Mobile(String modelsTel, String number, String memory, String memoryGB, String operator) {
         this.modelsTel = modelsTel;

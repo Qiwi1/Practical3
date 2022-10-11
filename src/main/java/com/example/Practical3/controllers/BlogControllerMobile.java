@@ -6,8 +6,11 @@ import com.example.Practical3.reposytories.MobileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.Binding;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,19 +32,17 @@ public class BlogControllerMobile {
     }
 
     @GetMapping("/add")
-    public String MobileAdd(Model model)
+    public String MobileAdd(Mobile mobile, Model model)
     {
         return "mobile-add";
     }
 
     @PostMapping("/add")
-    public String MobilePostAdd(@RequestParam String modelsTel,
-                              @RequestParam String number,
-                              @RequestParam String memory,
-                              @RequestParam String memoryGB,
-                              @RequestParam String operator, Model model)
+    public String MobilePostAdd(@Valid Mobile mobile, BindingResult bindingResult,Model model)
     {
-        Mobile mobile = new Mobile(modelsTel, number, memory, memoryGB, operator);
+        if (bindingResult.hasErrors()){
+            return "mobile-add";
+        }
         mobileRepository.save(mobile);
         return "redirect:/";
     }
@@ -76,34 +77,39 @@ public class BlogControllerMobile {
     }
 
     @GetMapping("/{id}/edit")
-    public String mobileEdit(@PathVariable(value = "id") long id, Model model)
+    public String mobileEdit(@PathVariable(value = "id") long id, Model model, Mobile mobile)
     {
         if(!mobileRepository.existsById(id))
         {
             return "redirect:/";
         }
-        Optional<Mobile> mobile = mobileRepository.findById(id);
-        ArrayList<Mobile> res = new ArrayList<>();
-        mobile.ifPresent(res::add);
-        model.addAttribute("mobile", res);
+//        Optional<Mobile> mobile = mobileRepository.findById(id);
+//        ArrayList<Mobile> res = new ArrayList<>();
+//        mobile.ifPresent(res::add);
+        mobile = mobileRepository.findById(id).orElseThrow();
+        model.addAttribute("mobile", mobile);
         return "mobile-edit";
     }
 
     @PostMapping("/{id}/edit")
-    public String mobilePostUpdate (@PathVariable("id")long id,
-                                  @RequestParam String modelsTel,
-                                  @RequestParam String number,
-                                  @RequestParam String memory,
-                                  @RequestParam String memoryGB,
-                                  @RequestParam String operator,
+    public String mobilePostUpdate (@PathVariable("id")long id, @Valid Mobile mobile,
+                                  BindingResult bindingResult,
+//                                  @RequestParam String modelsTel,
+//                                  @RequestParam String number,
+//                                  @RequestParam String memory,
+//                                  @RequestParam String memoryGB,
+//                                  @RequestParam String operator,
                                   Model model)
     {
-        Mobile mobile = mobileRepository.findById(id).orElseThrow();
-        mobile.setModelsTel(modelsTel);
-        mobile.setNumber(number);
-        mobile.setMemory(memory);
-        mobile.setMemoryGB(memoryGB);
-        mobile.setOperator(operator);
+        if (bindingResult.hasErrors()){
+            return "mobile-edit";
+        }
+//        Mobile mobile = mobileRepository.findById(id).orElseThrow();
+//        mobile.setModelsTel(modelsTel);
+//        mobile.setNumber(number);
+//        mobile.setMemory(memory);
+//        mobile.setMemoryGB(memoryGB);
+//        mobile.setOperator(operator);
         mobileRepository.save(mobile);
         return "redirect:/";
     }

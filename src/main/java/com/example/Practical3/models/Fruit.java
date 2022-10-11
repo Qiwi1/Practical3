@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Fruit {
@@ -12,7 +14,22 @@ public class Fruit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nazvanie,  strana,  ves,  forma,  kolwo;
+
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String nazvanie;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String strana;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String ves;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String forma;
+    @NotBlank(message = "Поле не должно быть пустым")
+    @Size(min = 5, message = "Текст должен быть больше 5 символов")
+    private String kolwo;
     private int views;
 
     public Fruit(String nazvanie, String strana, String ves, String forma, String kolwo) {
