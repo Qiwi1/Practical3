@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/fruit")
-@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+@PreAuthorize("hasAnyAuthority('USER')")
 public class BlogControllerFruit {
 
     @Autowired
