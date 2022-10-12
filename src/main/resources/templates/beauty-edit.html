@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div th:each="el:${beauty}">
+    <form th:object="${beauty}" method="post">
+        <input th:field="*{nazvanie}" type="text" th:value="${el.nazvanie}" id="nazvanie" name="nazvanie" placeholder="Введите название фрукта">
+        <div style="color: red " th:if="${#fields.hasErrors('nazvanie')}" th:errors="*{nazvanie}"></div>
+        <input th:field="*{Sostav}" type="text" th:value="${el.Sostav}" name="Sostav" placeholder="Введите состав">
+        <div style="color: red " th:if="${#fields.hasErrors('Sostav')}" th:errors="*{Sostav}"></div>
+        <input th:field="*{kolwo}" type="text" th:value="${el.kolwo}" name="kolwo" placeholder="Введите количество">
+        <div style="color: red " th:if="${#fields.hasErrors('kolwo')}" th:errors="*{kolwo}"></div>
+        <br>
+        <br>
+        <button type="submit" >Сохранить изменения</button>
+    </form>
+
+</div>
+</body>
+</html>

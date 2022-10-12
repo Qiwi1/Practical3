@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Информация о одежде</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div class="Mydiv" th:each="el : ${clothes}">
+    <h3>Подробнее про одежду: </h3> <h3 th:text="${el.nazvanie}"></h3>
+    <p th:text="${el.Size}"></p>
+    <p th:text="${el.TypeClothes}"></p>
+    <p th:text="${el.Ves}"></p>
+    <p th:text="${el.Tkan}"></p>
+    <form th:action="'/clothes/' + ${el.id} + '/remove'" method="post">
+        <button th:class="MyButton" type="submit" class="btn btn-del">Удалить</button>
+    </form>
+
+    <form th:action="'/clothes/' + ${el.id} + '/edit'" method="get">
+        <button th:class="MyButton" type="submit" class="btn btn-del">Изменить</button>
+    </form>
+
+</div>
+</body>
+</html>

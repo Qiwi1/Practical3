@@ -8,19 +8,20 @@
 <body>
 <div th:insert="fragments/header :: mainheader"></div>
 
-<div th:if="${user}">
-    <form th:action="'/user/' + ${user.id}" method="post">
-        <div>
-            <p th:text="${user.username}"></p>
-            <input type="text" name="username" th:value="${user.username}">
-        </div>
-        <div th:each="el : ${rolesusers}">
-            <input th:id="el" type="checkbox" th:name="${'rolesuser[]'}"
-                   th:value="${el}" th:checked="${#lists.contains(user.roles, el)}">
-            <label th:text="${el}"></label>
-        </div>
-        <button type="submit">Изменить пользователя</button>
-    </form>
-</div>
+    <div th:if="${user}">
+        <form th:action="'/user/' + ${user.id}" method="post">
+            <div>
+                <p th:text="${user.username}"></p>
+                <input type="text" name="username" th:value="${user.username}">
+            </div>
+            <div th:each="el : ${rolesusers}">
+                <input th:id="el" type="checkbox" th:name="${'rolesuser[]'}"
+                       th:value="${el}" th:checked="${#lists.contains(user.roles, el)}">
+                <label th:text="${el}"></label>
+            </div>
+            <button type="submit">Изменить пользователя</button>
+        </form>
+    </div>
+
 </body>
 </html>

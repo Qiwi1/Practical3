@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<div th:each="el:${clothes}">
+    <form th:object="${clothes}" method="post">
+        <input th:field="*{nazvanie}" type="text" th:value="${el.nazvanie}" id="nazvanie" name="nazvanie" placeholder="Введите название фрукта">
+        <div style="color: red " th:if="${#fields.hasErrors('nazvanie')}" th:errors="*{nazvanie}"></div>
+        <input th:field="*{Size}" type="text" th:value="${el.Size}" name="Size" placeholder="Введите размер одежды">
+        <div style="color: red " th:if="${#fields.hasErrors('Size')}" th:errors="*{Size}"></div>
+        <input th:field="*{TypeClothes}" type="text" th:value="${el.TypeClothes}" name="TypeClothes" placeholder="Введите тип одежды">
+        <div style="color: red " th:if="${#fields.hasErrors('TypeClothes')}" th:errors="*{TypeClothes}"></div>
+        <input th:field="*{Ves}" type="text" th:value="${el.Ves}" name="Ves" placeholder="Введите вес">
+        <div style="color: red " th:if="${#fields.hasErrors('Ves')}" th:errors="*{Ves}"></div>
+        <input th:field="*{Tkan}" type="text" th:value="${el.Tkan}" name="Tkan" placeholder="Введите материал">
+        <div style="color: red " th:if="${#fields.hasErrors('Tkan')}" th:errors="*{Tkan}"></div>
+        <br>
+        <br>
+        <button type="submit" >Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

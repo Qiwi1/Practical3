@@ -50,7 +50,7 @@ public class UserController {
         //Arrays.stream(roles).forEach(r->user.getRoles().add(Role.valueOf(r)));
 
         userRepository.save(user);
-        return "redirect:/parts/";
+        return "redirect:/user";
     }
 
 }

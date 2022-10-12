@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Фрукты</title>
+    <title>Косметика</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -10,15 +10,15 @@
 
 <div th:insert="fragments/header :: mainheader"></div>
 <div th:class="Mydiv">
-<h1>Все фрукты</h1>
-<a class="btn btn-primary MyButton" href="/fruit/filter">Поиск фрукта</a>
-<a class="btn btn-primary MyButton" href="/fruit/add">Добавить фрукт</a>
+<h1>Вся косметика</h1>
+<a class="btn btn-primary MyButton" href="/beauty/filter">Поиск косметики</a>
+<a class="btn btn-primary MyButton" href="/beauty/add">Добавить косметику</a>
 </div>
-<div th:align="center" th:each="el : ${Fruit}">
+<div th:align="center" th:each="el : ${beauty}">
     <h3 th:align="center" th:text="${el.nazvanie}"></h3>
-    <p th:align="center" th:text="${el.strana}"></p>
-    <p th:align="center" th:text="${el.ves}"></p>
-    <a th:align="center" class="btn btn-primary" th:href="'/fruit/' + ${el.id}">Подробнее</a>
+    <p th:align="center" th:text="${el.sostav}"></p>
+    <p th:align="center" th:text="${el.kolwo}"></p>
+    <a th:align="center" class="btn btn-primary" th:href="'/beauty/' + ${el.id}">Подробнее</a>
 </div>
 </body>
 </html>

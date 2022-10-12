@@ -19,7 +19,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/fruit")
 @PreAuthorize("hasAnyAuthority('USER')")
-public class BlogControllerFruit {
+public class    BlogControllerFruit {
 
     @Autowired
     private FruitRepository fruitRepository;

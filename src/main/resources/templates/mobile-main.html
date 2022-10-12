@@ -1,23 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Телефоны</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
 </head>
 <body>
 
 <div th:insert="fragments/header :: mainheader"></div>
-
-
-
+<div th:class="Mydiv">
 <h1>Все телефоны</h1>
-<a href="/mobile/filter">Поиск телефона</a>
-<a href="/mobile/add">Добавить телефон</a>
-<div th:each="el : ${mobile}">
-    <h3 th:text="${el.modelsTel}"></h3>
-    <p th:text="${el.number}"></p>
-    <a th:href="'/mobile/' + ${el.id}">Подробнее</a>
+<a class="btn btn-primary MyButton" href="/mobile/filter">Поиск телефона</a>
+<a class="btn btn-primary MyButton" href="/mobile/add">Добавить телефон</a>
+</div>
+<div th:align="center" th:each="el : ${mobile}">
+    <h3 th:align="center" th:text="${el.modelsTel}"></h3>
+    <p th:align="center" th:text="${el.number}"></p>
+    <a th:align="center" class="btn btn-primary" th:href="'/mobile/' + ${el.id}">Подробнее</a>
 </div>
 </body>
 </html>

@@ -7,11 +7,13 @@
 </head>
 <body>
 <div th:insert="fragments/header :: mainheader"></div>
-<h1>Все пользователи</h1>
-<div th:each="el : ${users}">
-    <h3 th:text="${el.username}"></h3>
-    <p th:text="${el.roles}"></p>
-    <a th:href="'/user/' + ${el.id}" class="btn btn-outline-secondary">Редактировать</a>
-</div>
+
+    <h1>Все пользователи</h1>
+    <div th:each="el : ${users}">
+        <h3 th:text="${el.username}"></h3>
+        <p th:text="${el.roles}"></p>
+        <a th:href="'/user/' + ${el.id}" class="btn btn-outline-secondary">Редактировать</a>
+    </div>
+
 </body>
 </html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление новой косметики</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+<div th:insert="fragments/header :: mainheader"></div>
+
+<form th:object="${beauty}" th:action="${'/beauty/add'}" method="post">
+    <input th:field="*{nazvanie}" type="text" name="nazvanie" placeholder="Введите название">
+    <div style="color: red" th:if="${#fields.hasErrors('nazvanie')}" th:errors="*{nazvanie}"></div>
+    <input th:field="*{Sostav}" type="text" name="Sostav" placeholder="Введите состав">
+    <div style="color: red " th:if="${#fields.hasErrors('Sostav')}" th:errors="*{Sostav}"></div>
+    <input th:field="*{kolwo}" type="text" name="kolwo" placeholder="Введите количество">
+    <div style="color: red " th:if="${#fields.hasErrors('kolwo')}" th:errors="*{kolwo}"></div>
+    <br>
+    <button href="/beauty/main" type="submit">Добавить косметику</button>
+</form>
+</body>
+</html>

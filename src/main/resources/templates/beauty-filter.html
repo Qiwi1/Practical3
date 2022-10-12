@@ -10,14 +10,15 @@
 <div th:insert="fragments/header :: mainheader"></div>
 
 <h2>Поиск</h2>
-<form method="post" th:action="${'/fruit/filter/result'}">
+<form method="post" th:action="${'/beauty/filter/result'}">
     <input type="text" name="nazvanie">
     <button type="submit">Найти</button>
     <div th:each="el : ${result}">
         <h3 th:text="${el.nazvanie}"></h3>
-        <p th:text="${el.strana}"></p>
-        <strong th:text="${el.ves}"></strong>
+        <p th:text="${el.Sostav}"></p>
+        <p th:text="${el.kolwo}"></p>
     </div>
+
 </form>
 </body>
 </html>
